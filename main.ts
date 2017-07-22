@@ -31,7 +31,7 @@ if(true){
     coupledNumbers,
     coupledNumbersFn,
     coupledTexts,
-  ].forEach((core)=>output(core));
+  ].forEach((sum)=>output(sum));
 }
 else if(false)testNumTexts();
 else console.log(`main:
