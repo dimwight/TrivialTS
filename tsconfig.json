@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "allowUnreachableCode": true,
+    "target": "es2016",
+    "module": "es6"
+  }
+}

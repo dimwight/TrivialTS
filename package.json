@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "rollup: node": "rollup -c",
+    "rollup: browser": "rollup -c -w"
+  }
+}
