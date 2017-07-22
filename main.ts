@@ -12,7 +12,7 @@ function testNumTexts(){
   else for(const [at]of ats.entries())logNumText(at*1.5);
 }
 
-if(true) testNumTexts();
+if(false) testNumTexts();
 else if (false) console.log(`main:
   firstNumFn=${firstNumFn()}
   newNumText(2)=${newNumText(secondNum)}
@@ -20,6 +20,7 @@ else if (false) console.log(`main:
 else{
   let core=new trivial.Core(firstNum);
   core.setSecondNum(secondNum+=2);
-  console.log(`${core.newOutputText()}`);
+  let msg=`${core.newOutputText()}`;
+  console.log(msg);
 }
 

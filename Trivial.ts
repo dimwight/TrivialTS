@@ -5,8 +5,9 @@ export abstract class SumTwoNums {
 }
 export class Core extends SumTwoNums {
   setSecondNum(second:number):void{
+    throw new Error(`Not implemented in ${this.constructor.name}`);
   }
   newOutputText():string{
-    return undefined;
+    throw new Error(`Not implemented in ${this.constructor.name}`);
   }
 }
