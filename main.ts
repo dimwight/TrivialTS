@@ -1,5 +1,5 @@
-import * as _ from './trivial/_export';
-let firstNum=1,secondNum=2;
+import * as trivial from './trivial/_export';
+let firstNum=1,secondNum=1;
 const smallTxt='small',largerTxt='larger',bigTxt='big';
 
 const newNumText=(n:number)=>`${n} (a ${n<6?smallTxt:n<10?largerTxt:bigTxt} number)`,
@@ -9,18 +9,30 @@ function testNumTexts(){
   const ats=Array(10).fill(0,2,8);
   const logNumText=(n:number)=>console.log(newNumText(n));
   if(true) ats.forEach((_,at)=>logNumText(at*2));
-  else for(const [at]of ats.entries())logNumText(at*1.5);
+  else for(const [at]of ats.entries()) logNumText(at*1.5);
 }
+const getNumber=new trivial.Coupler(firstNum);
 
-if(false) testNumTexts();
-else if (false) console.log(`main:
+if(true){
+  const output=function(sum:trivial.SumTwoNums){
+    sum.setSecondNum(secondNum+=2);
+    if(!(sum instanceof trivial.WithCoupler))
+      console.log(`${sum.newOutputText()}`);
+    else firstNum+=1;
+  }
+  const core=new trivial.Core(firstNum),
+    coupledNumbers=new trivial.WithCoupler(getNumber),
+    coupledNumbersFn=new trivial.WithCoupler(getNumber),
+    coupledTexts=new trivial.WithCoupler(getNumber);
+  [
+    core,
+    coupledNumbers,
+    coupledNumbersFn,
+    coupledTexts,
+  ].forEach((core)=>output(core));
+}
+else if(false)testNumTexts();
+else console.log(`main:
   firstNumFn=${firstNumFn()}
-  newNumText(2)=${newNumText(secondNum)}
+  newNumText(1)=${newNumText(secondNum)}
 `);
-else{
-  let core:_.SumTwoNums=new _.Core(firstNum);
-  core.setSecondNum(secondNum+=2);
-  let msg=`${core.newOutputText()}`;
-  console.log(false?(core instanceof _.SumTwoNums):msg);
-}
-
