@@ -1,4 +1,4 @@
-import * as trivial from './Trivial';
+import * as _ from './trivial/_export';
 let firstNum=1,secondNum=2;
 const smallTxt='small',largerTxt='larger',bigTxt='big';
 
@@ -18,9 +18,9 @@ else if (false) console.log(`main:
   newNumText(2)=${newNumText(secondNum)}
 `);
 else{
-  let core=new trivial.Core(firstNum);
+  let core:_.SumTwoNums=new _.Core(firstNum);
   core.setSecondNum(secondNum+=2);
   let msg=`${core.newOutputText()}`;
-  console.log(msg);
+  console.log(false?(core instanceof _.SumTwoNums):msg);
 }
 
