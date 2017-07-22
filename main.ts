@@ -1,4 +1,4 @@
-import * as trival from './Trivial';
+import * as trivial from './Trivial';
 let firstNum=1,secondNum=2;
 const smallTxt='small',largerTxt='larger',bigTxt='big';
 
@@ -18,7 +18,7 @@ else if (false) console.log(`main:
   newNumText(2)=${newNumText(secondNum)}
 `);
 else{
-  let core=new trival.Core(firstNum);
+  let core=new trivial.Core(firstNum);
   core.setSecondNum(secondNum+=2);
   console.log(`${core.newOutputText()}`);
 }
