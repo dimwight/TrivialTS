@@ -4,7 +4,7 @@ export abstract class SumTwoNums{
   abstract setSecondNum(second:number):void;
   abstract newOutputText():string;
 }
-export class Uncoupled extends SumTwoNums{
+export class SumTwoNumsUncoupled extends SumTwoNums{
   second:number;
   setSecondNum(second:number):void{
     this.second=second;
@@ -27,7 +27,7 @@ export class Uncoupled extends SumTwoNums{
 type NumText=(n:number)=>string;
 type NumValue=()=>number;
 
-export class Coupler{
+export class SumTwoNumsCoupler{
   readonly firstFn:NumValue;
   readonly numTextFn:NumText;
   readonly firstNum:number;
@@ -40,9 +40,9 @@ export class Coupler{
   first=()=> this.firstFn == null ? this.firstNum : this.firstFn();
 }
 
-export class WithCoupler extends Uncoupled{
+export class SumTwoNumsCoupled extends SumTwoNumsUncoupled{
   readonly firstFn:NumValue;
-  constructor(private coupler:Coupler){
+  constructor(private coupler:SumTwoNumsCoupler){
     super(coupler.first());
     this.firstFn=coupler.firstFn;
   }
