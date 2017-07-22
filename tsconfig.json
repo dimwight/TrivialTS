@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
+    "removeComments": false,
     "sourceMap": true,
     "allowUnreachableCode": true,
     "target": "es2016",

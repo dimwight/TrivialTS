@@ -1,4 +1,5 @@
-const firstNum=1,secondNum=1;
+import * as trival from './Trivial';
+let firstNum=1,secondNum=2;
 const smallTxt='small',largerTxt='larger',bigTxt='big';
 
 const newNumText=(n:number)=>`${n} (a ${n<6?smallTxt:n<10?largerTxt:bigTxt} number)`,
@@ -12,8 +13,13 @@ function testNumTexts(){
 }
 
 if(true) testNumTexts();
-else console.log(`main:
+else if (false) console.log(`main:
   firstNumFn=${firstNumFn()}
-  newNumText(2)=${newNumText(2)}
+  newNumText(2)=${newNumText(secondNum)}
 `);
+else{
+  let core=new trival.Core(firstNum);
+  core.setSecondNum(secondNum+=2);
+  console.log(`${core.newOutputText()}`);
+}
 
