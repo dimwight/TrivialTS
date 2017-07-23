@@ -28,8 +28,6 @@ export class SumTwoNumsUncoupled extends SumTwoNums{
   }
 }
 
-type NumText=(n:number)=>string;
-type NumValue=()=>number;
 
 interface Coupler{
   first():number;
@@ -39,7 +37,7 @@ interface Coupler{
 }
 
 export class SumTwoNumsCoupled extends SumTwoNumsUncoupled{
-  constructor(private c:SumTwoNumsCoupler){
+  constructor(private c:SumTwoNumsCoupler1){
     super(c.first());
   }
   setSecondNum(second:number){
@@ -57,7 +55,9 @@ export class SumTwoNumsCoupled extends SumTwoNumsUncoupled{
   };
 }
 
-export class SumTwoNumsCoupler{
+type NumText=(n:number)=>string;
+type NumValue=()=>number;
+export class SumTwoNumsCoupler1{
   readonly firstFn:NumValue;
   readonly numTextFn:NumText;
   readonly firstNum:number;
