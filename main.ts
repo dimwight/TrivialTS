@@ -19,7 +19,7 @@ if(true){
       console.log(`${sum.newOutputText()}`);
     else firstNum+=1;
   }
-  if(false) for(let sum of sums) doSum(sum);
+  if(false) for(const sum of sums) doSum(sum);
   else sums.forEach((sum)=>doSum(sum));
 }
 else if(true){
