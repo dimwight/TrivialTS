@@ -3,7 +3,7 @@ let firstNum=1,secondNum=1;
 const smallTxt='small',largerTxt='larger',bigTxt='big';
 
 const getFirstNum=()=>firstNum,
-  newNumText=(n:number)=>`${n} (a ${(n<6?smallTxt:n<10?largerTxt:bigTxt)} number)`;
+  newNumText=(n:number)=>`${n}(a ${(n<6?smallTxt:n<10?largerTxt:bigTxt)} number)`;
 
 if(true){
   const _=trivial;
@@ -17,7 +17,7 @@ if(true){
       if(!(sum instanceof _.SumTwoNumsCoupled))
         console.log(`${sum.newOutputText()}`);
       else firstNum+=1;
-    }
+    },
   );
 }
 else if(true){
