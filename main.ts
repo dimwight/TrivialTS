@@ -15,9 +15,12 @@ function testNumTexts(){
   if(true) ats.forEach((_,at)=>logNumText(at*2));
   else for(const [at]of ats.entries()) logNumText(at*1.5);
 }
+let x=new class extends trivial.SumTwoNumsCoupler{
+
+}
 const getNumber=new trivial.SumTwoNumsCoupler(firstNumFn()),
-  getNumFn=new trivial.SumTwoNumsCoupler(undefined,undefined,firstNumFn),
-  getTextsFn=new trivial.SumTwoNumsCoupler(undefined,numTextFn,firstNumFn);
+  getNumFn=new trivial.SumTwoNumsCoupler(undefined,firstNumFn),
+  getTextsFn=new trivial.SumTwoNumsCoupler(undefined,firstNumFn,numTextFn);
 
 if(true){
   const output=function(sum:trivial.SumTwoNums){
@@ -26,6 +29,7 @@ if(true){
       console.log(`${sum.newOutputText()}`);
     else firstNum+=1;
   }
+
   const uncoupled=new trivial.SumTwoNumsUncoupled(firstNum),
     coupledNumber=new trivial.SumTwoNumsCoupled(getNumber),
     coupledNumberFn=new trivial.SumTwoNumsCoupled(getNumFn),

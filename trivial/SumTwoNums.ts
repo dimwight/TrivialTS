@@ -4,6 +4,7 @@ export abstract class SumTwoNums{
   abstract setSecondNum(second:number):void;
   abstract newOutputText():string;
 }
+
 export class SumTwoNumsUncoupled extends SumTwoNums{
   second:number;
   setSecondNum(second:number):void{
@@ -27,22 +28,16 @@ export class SumTwoNumsUncoupled extends SumTwoNums{
 type NumText=(n:number)=>string;
 type NumValue=()=>number;
 
-export class SumTwoNumsCoupler{
+interface STNCoupler{
+  first():number;
   readonly firstFn:NumValue;
-  readonly numTextFn:NumText;
-  readonly firstNum:number;
-  constructor(firstNum:number=-1,numTextFn=(n:number)=>`${n}`,numFn?:()=>number){
-    this.firstNum=firstNum;
-    this.numTextFn=numTextFn;
-    this.firstFn=numFn||(()=>this.firstNum);
-  }
-  output=(newSumText:string)=>console.log(`${newSumText}`);
-  first=()=> this.firstFn == null ? this.firstNum : this.firstFn();
+  output(text:string):void;
+  numTextFn(num:number):string;
 }
 
 export class SumTwoNumsCoupled extends SumTwoNumsUncoupled{
   readonly firstFn:NumValue;
-  constructor(private coupler:SumTwoNumsCoupler){
+  constructor(private coupler:STNCoupler){
     super(coupler.first());
     this.firstFn=coupler.firstFn;
   }
@@ -60,3 +55,21 @@ export class SumTwoNumsCoupled extends SumTwoNumsUncoupled{
     return this.coupler.numTextFn(this.firstFn()+this.second);
   };
 }
+
+export class SumTwoNumsCoupler {
+  readonly firstFn:NumValue;
+  readonly numTextFn:NumText;
+  readonly firstNum:number;
+  constructor(firstNum:number=-1,numFn?:()=>number,numTextFn=(n:number)=>`${n}`){
+    this.firstNum=firstNum;
+    this.numTextFn=numTextFn;
+    this.firstFn=numFn||(()=>this.firstNum);
+  }
+  first(){
+    return this.firstFn==null?this.firstNum:this.firstFn();
+  };
+  output(newSumText:string){
+    return console.log(`${newSumText}`);
+  }
+}
+
