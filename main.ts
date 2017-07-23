@@ -1,9 +1,9 @@
 import {
   SumTwoNums,
-  SumTwoNumsUncoupled,
-  SumTwoNumsCoupler,
   SumTwoNumsCoupled,
-} from './trivial/_export';
+  SumTwoNumsCoupler,
+  SumTwoNumsUncoupled,
+} from './sums/_export';
 
 let firstNum=1,secondNum=1;
 const smallTxt='small',largerTxt='larger',bigTxt='big';
