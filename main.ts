@@ -7,9 +7,29 @@ const getFirstNum=()=>firstNum,
   newNumText=(n:number)=>`${n}(a ${(n<6?smallTxt:n<10?largerTxt:bigTxt)} number)`;
 
 if(true){
-  const coupler1=new trivial.SumTwoNumsCoupler1(getFirstNum());
-  const coupler2=new trivial.SumTwoNumsCoupler1(undefined,getFirstNum);
-  const coupler3=new trivial.SumTwoNumsCoupler1(undefined,getFirstNum,newNumText);
+  const dartStyle=false;
+  console.log('dartStyle='+dartStyle);
+  const coupler1=!dartStyle?new class coupler1 extends trivial.SumTwoNumsCoupler2{
+    firstFn(){
+      return getFirstNum();
+    }
+  }:new trivial.SumTwoNumsCoupler1(firstNum);
+  const coupler2=!dartStyle?new class coupler2 extends trivial.SumTwoNumsCoupler2{
+    firstFn(){
+      return firstNum;
+    }
+  }:new trivial.SumTwoNumsCoupler1(undefined,getFirstNum);
+  const coupler3=!dartStyle?new class coupler3 extends trivial.SumTwoNumsCoupler2{
+    first(){
+      return firstNum;
+    }
+    firstFn(){
+      return getFirstNum();
+    }
+    numTextFn(num:number){
+      return newNumText(num);
+    }
+  }:new trivial.SumTwoNumsCoupler1(undefined,getFirstNum,newNumText);
   const sums=[
     new trivial.SumTwoNumsUncoupled(getFirstNum()),
     new trivial.SumTwoNumsCoupled(coupler1),

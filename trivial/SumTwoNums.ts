@@ -9,8 +9,8 @@ export class SumTwoNumsUncoupled extends SumTwoNums{
   protected second:number=-1;
   setSecondNum(second:number):void{
     const assert=this.second<0;
-    if(!assert)throw new Error('Existing second='+this.second);
-    else if(false)console.assert(assert);
+    if(!assert) throw new Error('Existing second='+this.second);
+    else if(false) console.assert(assert);
     else this.second=second;
   }
   firstText(){
@@ -28,7 +28,6 @@ export class SumTwoNumsUncoupled extends SumTwoNums{
   }
 }
 
-
 interface Coupler{
   first():number;
   firstFn():number;
@@ -37,7 +36,7 @@ interface Coupler{
 }
 
 export class SumTwoNumsCoupled extends SumTwoNumsUncoupled{
-  constructor(private c:SumTwoNumsCoupler1){
+  constructor(private c:Coupler){
     super(c.first());
   }
   setSecondNum(second:number){
@@ -45,7 +44,7 @@ export class SumTwoNumsCoupled extends SumTwoNumsUncoupled{
     this.c.output(this.newOutputText())
   }
   firstText(){
-    return this.c.numTextFn(this.c.firstFn());
+    return this.c.numTextFn(this.c.first());
   }
   secondText(){
     return this.c.numTextFn(this.second);
@@ -69,6 +68,20 @@ export class SumTwoNumsCoupler1{
   first():number{
     if(false) throw new Error('Not implemented');
     return this.firstFn==null?this.firstNum:this.firstFn();
+  }
+  output(newSumText:string){
+    return console.log(`${newSumText}`);
+  }
+}
+export class SumTwoNumsCoupler2{
+  first(){
+    return -1;
+  }
+  firstFn(){
+    if(true) throw new Error('Not implemented');
+  }
+  numTextFn(num:number):string{
+    return `${num}`;
   }
   output(newSumText:string){
     return console.log(`${newSumText}`);
