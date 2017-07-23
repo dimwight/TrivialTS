@@ -6,19 +6,20 @@ const getFirstNum=()=>firstNum,
   newNumText=(n:number)=>`${n}(a ${(n<6?smallTxt:n<10?largerTxt:bigTxt)} number)`;
 
 if(true){
-  const _=trivial;
-  [
-    new _.SumTwoNumsUncoupled(getFirstNum()),
-    new _.SumTwoNumsCoupled(new _.SumTwoNumsCoupler(getFirstNum())),
-    new _.SumTwoNumsCoupled(new _.SumTwoNumsCoupler(undefined,getFirstNum)),
-    new _.SumTwoNumsCoupled(new _.SumTwoNumsCoupler(undefined,getFirstNum,newNumText)),
-  ].forEach((sum)=>{
-      sum.setSecondNum(secondNum+=2);
-      if(!(sum instanceof _.SumTwoNumsCoupled))
-        console.log(`${sum.newOutputText()}`);
-      else firstNum+=1;
-    },
-  );
+  const t=trivial,sums=[
+    new t.SumTwoNumsUncoupled(getFirstNum()),
+    new t.SumTwoNumsCoupled(new t.SumTwoNumsCoupler(getFirstNum())),
+    new t.SumTwoNumsCoupled(new t.SumTwoNumsCoupler(undefined,getFirstNum)),
+    new t.SumTwoNumsCoupled(new t.SumTwoNumsCoupler(undefined,getFirstNum,newNumText)),
+  ];
+  function doSum(sum:trivial.SumTwoNums){
+    sum.setSecondNum(secondNum+=2);
+    if(!(sum instanceof t.SumTwoNumsCoupled))
+      console.log(`${sum.newOutputText()}`);
+    else firstNum+=1;
+  }
+  if(false)for(let sum of sums)doSum(sum);
+  else sums.forEach((sum)=>doSum(sum));
 }
 else if(true){
   const logNumText=(n:number)=>console.log(newNumText(n));
