@@ -7,19 +7,19 @@ const getFirstNum=()=>firstNum,
   newNumText=(n:number)=>`${n}(a ${(n<6?smallTxt:n<10?largerTxt:bigTxt)} number)`;
 
 if(true){
-  const dartStyle=false;
-  console.log('dartStyle='+dartStyle);
-  const coupler1=!dartStyle?new class coupler1 extends trivial.SumTwoNumsCoupler2{
+  const sums=[
+    new trivial.SumTwoNumsUncoupled(getFirstNum()),
+    new trivial.SumTwoNumsCoupled(new class coupler1 extends trivial.SumTwoNumsCoupler2{
     firstFn(){
       return getFirstNum();
     }
-  }:new trivial.SumTwoNumsCoupler1(firstNum);
-  const coupler2=!dartStyle?new class coupler2 extends trivial.SumTwoNumsCoupler2{
+  }),
+    new trivial.SumTwoNumsCoupled(new class coupler2 extends trivial.SumTwoNumsCoupler2{
     firstFn(){
-      return firstNum;
+      return getFirstNum();
     }
-  }:new trivial.SumTwoNumsCoupler1(undefined,getFirstNum);
-  const coupler3=!dartStyle?new class coupler3 extends trivial.SumTwoNumsCoupler2{
+  }),
+  new trivial.SumTwoNumsCoupled(new class coupler3 extends trivial.SumTwoNumsCoupler2{
     first(){
       return firstNum;
     }
@@ -29,12 +29,7 @@ if(true){
     numTextFn(num:number){
       return newNumText(num);
     }
-  }:new trivial.SumTwoNumsCoupler1(undefined,getFirstNum,newNumText);
-  const sums=[
-    new trivial.SumTwoNumsUncoupled(getFirstNum()),
-    new trivial.SumTwoNumsCoupled(coupler1),
-    new trivial.SumTwoNumsCoupled(coupler2),
-    new trivial.SumTwoNumsCoupled(coupler3),
+  })
   ];
   function doSum(sum:any){
     sum.setSecondNum(secondNum+=2);
