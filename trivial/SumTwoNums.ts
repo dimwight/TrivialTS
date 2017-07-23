@@ -54,6 +54,19 @@ export class SumTwoNumsCoupled extends SumTwoNumsUncoupled{
   };
 }
 
+export abstract class SumTwoNumsCoupler2 implements Coupler{
+  first(){
+    return -1;
+  }
+  abstract firstFn():number;
+  numTextFn(num:number):string{
+    return `${num}`;
+  }
+  output(newSumText:string){
+    return console.log(`${newSumText}`);
+  }
+}
+
 type NumText=(n:number)=>string;
 type NumValue=()=>number;
 export class SumTwoNumsCoupler1{
@@ -68,20 +81,6 @@ export class SumTwoNumsCoupler1{
   first():number{
     if(false) throw new Error('Not implemented');
     return this.firstFn==null?this.firstNum:this.firstFn();
-  }
-  output(newSumText:string){
-    return console.log(`${newSumText}`);
-  }
-}
-export class SumTwoNumsCoupler2{
-  first(){
-    return -1;
-  }
-  firstFn(){
-    if(true) throw new Error('Not implemented');
-  }
-  numTextFn(num:number):string{
-    return `${num}`;
   }
   output(newSumText:string){
     return console.log(`${newSumText}`);

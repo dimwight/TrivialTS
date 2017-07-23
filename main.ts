@@ -10,26 +10,26 @@ if(true){
   const sums=[
     new trivial.SumTwoNumsUncoupled(getFirstNum()),
     new trivial.SumTwoNumsCoupled(new class coupler1 extends trivial.SumTwoNumsCoupler2{
-    firstFn(){
-      return getFirstNum();
-    }
-  }),
+      firstFn(){
+        return getFirstNum();
+      }
+    }),
     new trivial.SumTwoNumsCoupled(new class coupler2 extends trivial.SumTwoNumsCoupler2{
-    firstFn(){
-      return getFirstNum();
-    }
-  }),
-  new trivial.SumTwoNumsCoupled(new class coupler3 extends trivial.SumTwoNumsCoupler2{
-    first(){
-      return firstNum;
-    }
-    firstFn(){
-      return getFirstNum();
-    }
-    numTextFn(num:number){
-      return newNumText(num);
-    }
-  })
+      firstFn(){
+        return getFirstNum();
+      }
+    }),
+    new trivial.SumTwoNumsCoupled(new class coupler3 extends trivial.SumTwoNumsCoupler2{
+      first(){
+        return firstNum;
+      }
+      firstFn(){
+        return firstNum;
+      }
+      numTextFn(num:number){
+        return newNumText(num);
+      }
+    })
   ];
   function doSum(sum:any){
     sum.setSecondNum(secondNum+=2);
