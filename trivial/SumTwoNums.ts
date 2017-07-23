@@ -6,9 +6,12 @@ export abstract class SumTwoNums{
 }
 
 export class SumTwoNumsUncoupled extends SumTwoNums{
-  second:number;
+  protected second:number=-1;
   setSecondNum(second:number):void{
-    this.second=second;
+    const assert=this.second<0;
+    if(!assert)throw new Error('Existing second='+this.second);
+    else if(false)console.assert(assert);
+    else this.second=second;
   }
   firstText(){
     return `${this.first}`;
@@ -54,7 +57,7 @@ export class SumTwoNumsCoupled extends SumTwoNumsUncoupled{
   };
 }
 
-export class SumTwoNumsCoupler {
+export class SumTwoNumsCoupler{
   readonly firstFn:NumValue;
   readonly numTextFn:NumText;
   readonly firstNum:number;
@@ -64,7 +67,7 @@ export class SumTwoNumsCoupler {
     this.firstFn=numFn||(()=>this.firstNum);
   }
   first():number{
-    if(false)throw new Error('Not implemented');
+    if(false) throw new Error('Not implemented');
     return this.firstFn==null?this.firstNum:this.firstFn();
   }
   output(newSumText:string){
