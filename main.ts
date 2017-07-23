@@ -1,4 +1,5 @@
 import * as trivial from './trivial/_export';
+
 let firstNum=1,secondNum=1;
 const smallTxt='small',largerTxt='larger',bigTxt='big';
 
@@ -6,19 +7,19 @@ const getFirstNum=()=>firstNum,
   newNumText=(n:number)=>`${n}(a ${(n<6?smallTxt:n<10?largerTxt:bigTxt)} number)`;
 
 if(true){
-  const t=trivial,sums=[
-    new t.SumTwoNumsUncoupled(getFirstNum()),
-    new t.SumTwoNumsCoupled(new t.SumTwoNumsCoupler(getFirstNum())),
-    new t.SumTwoNumsCoupled(new t.SumTwoNumsCoupler(undefined,getFirstNum)),
-    new t.SumTwoNumsCoupled(new t.SumTwoNumsCoupler(undefined,getFirstNum,newNumText)),
+  const _=trivial,sums=[
+    new _.SumTwoNumsUncoupled(getFirstNum()),
+    new _.SumTwoNumsCoupled(new _.SumTwoNumsCoupler(getFirstNum())),
+    new _.SumTwoNumsCoupled(new _.SumTwoNumsCoupler(undefined,getFirstNum)),
+    new _.SumTwoNumsCoupled(new _.SumTwoNumsCoupler(undefined,getFirstNum,newNumText)),
   ];
-  function doSum(sum:trivial.SumTwoNums){
+  function doSum(sum:any){
     sum.setSecondNum(secondNum+=2);
-    if(!(sum instanceof t.SumTwoNumsCoupled))
+    if(!(sum instanceof _.SumTwoNumsCoupled))
       console.log(`${sum.newOutputText()}`);
     else firstNum+=1;
   }
-  if(false)for(let sum of sums)doSum(sum);
+  if(false) for(let sum of sums) doSum(sum);
   else sums.forEach((sum)=>doSum(sum));
 }
 else if(true){
